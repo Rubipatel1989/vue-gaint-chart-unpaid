@@ -1,72 +1,33 @@
 <template>
        <div class="task-row">
-              <div class="task-bars">
-                     <div class="text-center" :style="barStyle">
-                            <span class="task-label">{{ task.name }}</span>
-                     </div>
-              </div>
+         <div class="row-number">{{ rowNumber }}</div>
        </div>
-</template>
-
-<script>
-export default {
-       name: 'TaskRow',
+     </template>
+     
+     <script>
+     export default {
+       name: "TaskRow",
        props: {
-              task: {
-                     type: Object,
-                     required: true,
-              },
-              dates: {
-                     type: Array,
-                     required: true,
-              },
+         rowNumber: Number,
        },
-       mounted() {
-              console.log("Task in TaskRow:", this.task);
-             //console.log("Dates in TaskRow:", this.dates);
-       },
-       computed: {
-              barStyle() {
-                     const startIndex = this.dates.findIndex(
-                            (date) => date.toISOString().split("T")[0] === this.task.start
-                     );
-                     const endIndex = this.dates.findIndex(
-                            (date) => date.toISOString().split("T")[0] === this.task.end
-                     );
-                     const width = (endIndex - startIndex + 1) * 40; // 40px per day
-                     const left = startIndex * 40; // Offset from the start
-                     return {
-                            width: `${width}px`,
-                            left: `${left}px`,
-                            backgroundColor: "lightgreen",
-                            height: "20px",
-                            position: "absolute",
-                     };
-              }
-
-
-       },
-};
-</script>
-
-<style>
-.task-row {
+     };
+     </script>
+     
+     <style>
+     .task-row {
        display: flex;
        align-items: center;
-       border-bottom: 1px solid #ccc;
        height: 50px;
-}
-
-.task-bars {
-       position: relative;
-       flex-grow: 1;
-       /* Task bars take the remaining space */
-       height: 20px;
-       /* Match bar height */
-}
-
-.task-label {
-       padding: 0 5px;
-       /* Improve label visibility */
-}
-</style>
+       border-bottom: 1px solid #ccc;
+     }
+     
+     .row-number {
+       width: 100px;
+       text-align: center;
+       line-height: 50px;
+       border-right: 1px solid #ccc;
+       background-color: #f5f5f5;
+       font-weight: bold;
+     }
+     </style>
+     

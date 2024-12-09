@@ -1,48 +1,32 @@
 <template>
        <div class="timeline">
-              <div class="timeline-date" v-for="date in dates" :key="date.toISOString()">
-                     {{ date.getDate() }}
-              </div>
+         <div class="timeline-cell" v-for="label in columns" :key="label">{{ label }}</div>
        </div>
-</template>
-
-
-
-<script>
-export default {
-       name: 'TimeLine',
+     </template>
+     
+     <script>
+     export default {
+       name: "TimeLine",
        props: {
-              dates: Array,
+         columns: Array,
        },
-       mounted() {
-           //   console.log("Dates in Timeline:", this.dates);
-       },
-};
-</script>
-
-<style>
-.timeline {
+     };
+     </script>
+     
+     <style>
+     .timeline {
        display: flex;
        flex-direction: row;
-}
-
-.task-header {
+     }
+     
+     .timeline-cell {
        width: 100px;
-       /* Match task name column width */
-       border-right: 1px solid #ccc;
-}
-
-.dates {
-       display: flex;
-       flex-grow: 1;
-       /* Remaining space for dates */
-       border-bottom: 1px solid #ccc;
-}
-
-.timeline-date {
-       width: 40px;
-       /* Match task bar calculation (40px per day) */
+       height: 50px;
        text-align: center;
+       line-height: 50px;
        border-right: 1px solid #ccc;
-}
-</style>
+       background-color: #e0e0e0;
+       font-weight: bold;
+     }
+     </style>
+     

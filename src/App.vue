@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center text-primary">Gantt Chart</h1>
+  <h1 class="text-center text-primary">EMD Chart</h1>
   <div id="app">
     <router-view></router-view>
   </div>
